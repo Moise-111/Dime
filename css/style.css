@@ -1,0 +1,834 @@
+ /* ============================================================
+   GLOBAL RESET & COLORS
+============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --green: #38aa68;
+    --light-green: #95fabf;
+    --dark-green: #1e8449;
+    --black: #000000;
+    --white: #ffffff;
+    --grey: #f7f7f7;
+}
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    transition: top 0.3s ease-in-out;
+}
+
+/* Hidden navbar for scroll-hide effect */
+.navbar.hidden {
+    top: -100px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--black);
+}
+
+.logo-text span {
+    color: var(--green);
+}
+
+/* Desktop menu */
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background: var(--green);
+    color: var(--white);
+}
+
+/* CTA BUTTON */
+.cta-btn {
+    padding: 10px 20px;
+    background: var(--green);
+    color: var(--black);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: var(--white);
+    color: var(--green);
+    border: 2px solid var(--green);
+}
+
+/* Mobile Menu Icon */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+/* ============================================================
+   HERO SECTION
+============================================================ */
+.hero {
+    margin-top: 100px;
+    display: flex;
+    padding: 80px 50px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    background: #ffffff;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    font-weight: bold;
+    color: var(--green);
+    margin-bottom: 30px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: var(--black);
+    line-height: 1.6;
+     margin-bottom: 20px;
+}
+
+.hero-btn {
+    background: var(--green);
+    color: var(--black);
+    padding: 14px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background: var(--black);
+    color: var(--white);
+}
+
+.hero-image img {
+    max-width: 550px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* ============================================================
+   FEATURES SECTION
+============================================================ */
+.features {
+    padding: 50px 20px;
+    background: var(--grey);
+    text-align: center;
+}
+
+.features .section-title {
+    font-size: 36px;
+    color: var(--green);
+    margin-bottom: 50px;
+}
+
+.feature-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.feature-box {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.12);
+    transition: 0.3s ease;
+    width: 100%; 
+    max-width: 300px; 
+    margin: 0 auto; 
+}
+
+
+.feature-box img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.feature-box h3 {
+    color: var(--green);
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.feature-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.18);
+}
+@media (max-width: 768px) {
+    .feature-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ============================================================
+   HOW IT WORKS
+============================================================ */
+.how-it-works {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #eafaf1, #f7fff8);
+    text-align: center;
+}
+
+.how-it-works .section-title {
+    font-size: 38px;
+    color: var(--green);
+    margin-bottom: 60px;
+    font-weight: bold;
+    position: relative;
+}
+
+.how-it-works .section-title::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: var(--green);
+    display: block;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+.how-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two per row */
+    gap: 30px;
+    justify-items: center; /* Center cards in their grid cell */
+}
+
+.step-box {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.step-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 25px rgba(0,0,0,0.18);
+}
+
+.step-box::before {
+    content: counter(step);
+    counter-increment: step;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background: var(--green);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.step-box h3 {
+    color: var(--green);
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.step-box p {
+    color: #555;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+
+/* Center the image in its column */
+.how-image {
+    flex: 1; /* Take up 1/3 of the space */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    max-width: 33%;
+}
+
+.how-image img {
+    width: 100%; /* Make sure image takes full width of the column */
+    max-width: 450px; /* Optional: Limit image size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: If you want rounded corners */
+}
+
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .how-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+     .steps-container {
+        grid-template-columns: 1fr; /* Stack vertically on mobile */
+    }
+ .step-box {
+        max-width: 90%;
+    }
+
+    .how-image, .steps-container {
+        max-width: 100%;
+    }
+}
+
+
+.step-box {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 400px; /* Keep card reasonably large */
+    position: relative;
+}
+
+/* ============================================================
+   ABOUT SECTION
+============================================================ */
+.about {
+    padding: 60px 30px;
+    text-align: center;
+    background: #fcfdfc;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+}
+/* ============================================================
+   CAMIS SECTION
+============================================================ */
+.camis {
+    padding: 60px 30px;
+    text-align: center;
+    background: #fafcfa;
+}
+
+.camis-text {
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+}
+/* ============================================================
+   CONTACT SECTION
+============================================================ */
+.contact {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #eafaf1, #f7fff8);
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 36px;
+    color: var(--green);
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 50px;
+    font-size: 18px;
+    color: #333;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.3);
+    outline: none;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 16px;
+    background: var(--green);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+    background: #1e8449;
+    transform: scale(1.03);
+}
+
+
+/* ==========================
+   FAQ SECTION
+=========================== */
+/* FAQ Section */
+/* FAQ Section background */
+.faqs {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #eafaf1, #f7fff8); /* Same as contact */
+}
+.faqs .section-title {
+    font-size: 36px;
+    color: var(--green);
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.faq-question {
+    background: #fff;
+    border-left: 6px solid var(--green);
+    color: #333;
+    padding: 18px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #f0f0f0;
+}
+
+.faq-icon {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active .faq-icon {
+    transform: rotate(45deg); /* Rotates the icon */
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    background: #f0fdf4;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer.show {
+    max-height: 500px; /* Enough height for content */
+    padding: 15px 20px;
+}
+
+.faq-answer p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+/* Highlight FAQ answers with a green border */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    background: #f0fdf4; /* Light green background */
+    border-left: 5px solid var(--green); /* Green left border */
+    transition: max-height 0.4s ease, padding 0.4s ease, background 0.3s ease;
+}
+
+/* Optional: add a smooth transition effect for color changes */
+.faq-answer.show {
+    max-height: 500px; /* Enough height for content */
+    padding: 15px 20px;
+    background: #eafaf1; /* Slightly darker green background */
+}
+
+.faq-answer.show {
+    background: var(--light-green); /* Highlight color when opened */
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer {
+    padding: 40px 20px;
+    background: var(--black);
+    color: var(--white);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+
+/* ============================================================
+   RESPONSIVE DESIGN
+============================================================ */
+@media (max-width: 768px) {
+
+    /* Mobile Navbar */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: var(--black);
+        padding: 20px;
+        border-radius: 8px;
+        flex-direction: column;
+        gap: 15px;
+        width: 180px;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .feature-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+footer, .footer-container {
+    position: relative;
+    z-index: 5;
+}
+.footer-social i {
+    font-size: 20px; /* Control icon size */
+    color: white;
+    margin-top: 5px;
+
+}
+
+.footer-social i:hover {
+    color: #27ae60;
+    transform: scale(1.2);
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 10px 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #27ae60; /* Green hover */
+    text-decoration: underline;
+}
+
+.nav-links.show {
+    display: flex;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto; /* Push footer to the bottom */
+}
+/* FAQ icon rotation */
+.faq-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.faq-icon.rotate {
+    transform: rotate(45deg); /* + becomes X */
+}
+/* ==========================================
+   GLOBAL ANIMATION FOR ANIMATED ELEMENTS
+=========================================== */
+
+/* Initially, all elements are hidden (opacity 0) */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px); /* Slightly lower to create a sliding effect */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* When the element is visible in the viewport, apply the animation */
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0); /* Reset to original position */
+}
+
+/* Ensure footer and navbar elements do not get affected by scroll animation */
+.navbar, .footer {
+    opacity: 1; /* Always visible */
+    transform: translateY(0); /* No initial animation */
+}
+
+/* ================================
+   BUBBLE EFFECT
+================================= */
+
+/* Keyframes for bubble animation */
+@keyframes bubbleAnimation {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-500px) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Style for individual bubbles */
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Light bubbles */
+    border-radius: 50%;
+    animation: bubbleAnimation 10s infinite ease-in;
+    pointer-events: none; /* Prevent interaction with bubbles */
+}
+
+/* Variations for bubbles, randomizing speed and timing */
+.bubble:nth-child(odd) {
+    animation-duration: 12s;
+    animation-delay: -5s;
+}
+
+.bubble:nth-child(even) {
+    animation-duration: 10s;
+    animation-delay: -2s;
+}
+
+/* Bubbles container style */
+.bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* This ensures it's behind all content */
+}
+/* ===== LOADER ===== */
+body {
+    margin: 0;
+    background: #fbfcfb;
+}
+
+/* LOADING SCREEN STYLES */
+#loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #f6f8f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Fade out transition */
+    z-index: 9999; /* Ensure it's on top of all content */
+}
+
+.loader-container {
+    width: 170px;
+    height: 170px;
+    position: relative;
+}
+
+.loader-logo {
+    width: 90px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid transparent;
+}
+
+/* RING 1 */
+.ring1 {
+    width: 140px;
+    height: 140px;
+    top: 15px;
+    left: 15px;
+    border-top-color: #b8bbae;
+    animation: spin1 1.2s linear infinite;
+}
+
+/* RING 2 */
+.ring2 {
+    width: 160px;
+    height: 160px;
+    top: 5px;
+    left: 5px;
+    border-right-color: #6ae717;
+    animation: spin2 2.1s linear infinite;
+}
+
+/* RING 3 */
+.ring3 {
+    width: 120px;
+    height: 120px;
+    top: 25px;
+    left: 25px;
+    border-bottom-color: #080808;
+    animation: spin3 1.7s linear infinite reverse;
+}
+
+/* Animations */
+@keyframes spin1 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes spin2 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+@keyframes spin3 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
