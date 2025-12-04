@@ -3,9 +3,21 @@
 ============================================================ */
 const menuIcon = document.querySelector('.menu-icon');
 const navLinks = document.querySelector('.nav-links');
+const navLinksItems = document.querySelectorAll('.nav-links a'); // all nav links
 
 menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    navLinks.classList.toggle('active');      // show/hide menu
+    menuIcon.classList.toggle('active');      // animate hamburger
+});
+
+// Close menu when clicking a link (mobile only)
+navLinksItems.forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {      // mobile only
+            navLinks.classList.remove('active');
+            menuIcon.classList.remove('active');
+        }
+    });
 });
 
 /* ============================================================
@@ -82,4 +94,8 @@ window.addEventListener('scroll', () => {
 
     // Keep revealing elements while scrolling
     revealOnScroll();
+});
+menuIcon.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuIcon.classList.toggle('active'); // triggers the animation
 });
