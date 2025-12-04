@@ -95,7 +95,4 @@ window.addEventListener('scroll', () => {
     // Keep revealing elements while scrolling
     revealOnScroll();
 });
-menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuIcon.classList.toggle('active'); // triggers the animation
-});
+
