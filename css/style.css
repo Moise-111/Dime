@@ -103,7 +103,7 @@ html {
     font-size: 28px;
     color: var(--black);
     cursor: pointer;
-   margin-left: 5px;
+   margin-left: 10 px;
 }
 .mobile-cta {
     display: none;
@@ -827,19 +827,7 @@ html, body {
    RESPONSIVE DESIGN
 ============================================================ */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        background: var(--black);
-        padding: 20px;
-        border-radius: 8px;
-        flex-direction: column;
-        gap: 15px;
-        width: 180px;
-    }
-
+  
     .menu-icon {
         display: block;
     }
@@ -963,4 +951,5 @@ body {
 @keyframes spin1 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes spin2 { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
 @keyframes spin3 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
 
