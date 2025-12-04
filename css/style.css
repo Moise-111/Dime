@@ -176,24 +176,6 @@ html {
     }
 }
 
-.menu-icon {
-  display: block;
-  width: 28px;
-  height: 22px;
-  position: relative;
-  cursor: pointer;
-  z-index: 11000;
-}
-
-.menu-icon span {
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: var(--black);
-  left: 0;
-  transition: all 0.4s ease;
-  border-radius: 2px;
-}
 .menu-icon.active span:nth-child(1) { transform: rotate(45deg); top: 9px; }
 .menu-icon.active span:nth-child(2) { opacity: 0; }
 .menu-icon.active span:nth-child(3) { transform: rotate(-45deg); top: 9px; }
@@ -1002,3 +984,4 @@ body {
 @keyframes spin1 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes spin2 { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
 @keyframes spin3 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
