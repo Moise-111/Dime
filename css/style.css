@@ -107,7 +107,7 @@ html {
     cursor: pointer;
     width: 30px;
     height: 22px;
-    margin-left:10px;
+    margin-left:20px;
 }
 
 
@@ -168,7 +168,7 @@ html {
         bottom: 50px;
         left: 50%;
         transform: translateX(-50%);
-       
+       margin-top: 10px;
     }
 
     .mobile-cta a.cta-btn {
@@ -1006,5 +1006,6 @@ body {
 @keyframes spin1 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes spin2 { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
 @keyframes spin3 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
 
 
