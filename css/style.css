@@ -168,7 +168,7 @@ html {
         bottom: 50px;
         left: 50%;
         transform: translateX(-50%);
-       margin-top: 5px;
+       
     }
 
     .mobile-cta a.cta-btn {
@@ -180,6 +180,7 @@ html {
         border-radius: 8px;
         text-decoration: none;
         transition: all 0.3s ease;
+       margin-top: 5px;
     }
 
     .mobile-cta a.cta-btn:hover {
@@ -1005,4 +1006,5 @@ body {
 @keyframes spin1 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes spin2 { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
 @keyframes spin3 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
 
