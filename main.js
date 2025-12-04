@@ -1,72 +1,85 @@
-// main.js
-
-// LOADING SCREEN REMOVAL
-window.addEventListener('load', function() {
-    const loadingScreen = document.getElementById('loader-overlay');
-
-    // Fade out the loading screen
-    loadingScreen.style.opacity = '0';
-
-    // After fading out, hide the loading screen completely
-    setTimeout(() => {
-        loadingScreen.style.display = 'none'; // Hides the loading screen
-        document.getElementById('content').style.display = 'block'; // Show your main content
-    }, 1000); // Wait for the fade-out animation to finish (1 second)
-});
-
-// NAVBAR MOBILE TOGGLE
+/* ============================================================
+   NAVBAR TOGGLE (Mobile Menu)
+============================================================ */
 const menuIcon = document.querySelector('.menu-icon');
 const navLinks = document.querySelector('.nav-links');
 
-// Toggle mobile navigation menu
 menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
+    navLinks.classList.toggle('active');
 });
 
-// Smooth Scroll
-const smoothScrollLinks = document.querySelectorAll('.nav-links a');
+/* ============================================================
+   REVEAL ELEMENTS ON SCROLL
+============================================================ */
+const reveals = document.querySelectorAll('.reveal-on-scroll');
 
-smoothScrollLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href').substring(1); // Remove the # symbol
-        const targetElement = document.getElementById(targetId);
-
-        window.scrollTo({
-            top: targetElement.offsetTop - 80, // Offset for fixed navbar
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Reveal Elements on Scroll
-const revealElements = document.querySelectorAll('.reveal-on-scroll');
-window.addEventListener('scroll', () => {
-    revealElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < window.innerHeight - 100) {
-            element.classList.add('visible');
-        }
-    });
-});
-
-// Reveal Elements on Scroll (Debounced)
 const revealOnScroll = () => {
-    revealElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < window.innerHeight - 100) {
-            element.classList.add('visible');
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach(el => {
+        // Only check elements that are not visible yet
+        if (!el.classList.contains('visible')) {
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) {
+                el.classList.add('visible');
+            }
         }
     });
 };
 
-// Debounced Scroll Event to improve performance
-let scrollTimeout;
+/* ============================================================
+   FAQ TOGGLE (Accordion)
+============================================================ */
+const faqItems = document.querySelectorAll('.faq-question');
+
+faqItems.forEach(item => {
+    // Add click listener to each FAQ question
+    item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        const isActive = answer.classList.contains('show');
+
+        // Close all answers
+        faqItems.forEach(i => {
+            i.nextElementSibling.classList.remove('show');
+            i.classList.remove('active');
+            i.setAttribute('aria-expanded', 'false'); // Accessibility
+        });
+
+        // Open clicked answer if it was closed
+        if (!isActive) {
+            answer.classList.add('show');
+            item.classList.add('active');
+            item.setAttribute('aria-expanded', 'true');
+        }
+    });
+});
+
+/* ============================================================
+   LOADER
+============================================================ */
+const loaderOverlay = document.getElementById('loader-overlay');
+
+window.addEventListener('load', () => {
+    loaderOverlay.classList.add('hide');
+
+    setTimeout(() => {
+        loaderOverlay.style.display = 'none';
+    }, 800); // match CSS duration
+});
+
+
+/* ============================================================
+   OPTIONAL: Navbar Shadow on Scroll
+============================================================ */
+const navbar = document.querySelector('.navbar');
+
 window.addEventListener('scroll', () => {
-    if (scrollTimeout) clearTimeout(scrollTimeout);
-    
-    scrollTimeout = setTimeout(() => {
-        revealOnScroll();
-    }, 50); // Adjust the debounce delay (50ms is a good balance)
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+
+    // Keep revealing elements while scrolling
+    revealOnScroll();
 });
