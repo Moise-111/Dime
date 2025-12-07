@@ -315,7 +315,7 @@ section {
     }
 
     .hero-content {
-        max-width: 100%;
+        max-width: 50%;
     }
 
     .dynamic-title {
@@ -960,3 +960,4 @@ body {
         display: flex !important;
     }
 }
+
