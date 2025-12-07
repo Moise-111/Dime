@@ -5,12 +5,15 @@ const menuIcon = document.querySelector('.menu-icon');
 const navLinks = document.querySelector('.nav-links');
 
 menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    navLinks.classList.toggle('active');  
+    menuIcon.classList.toggle('active');  // animate hamburger
 });
-// Close menu when clicking a link (mobile)
+
+// Close mobile menu when clicking any link
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
+        menuIcon.classList.remove('active');
     });
 });
 
@@ -24,15 +27,17 @@ const revealOnScroll = () => {
     const windowHeight = window.innerHeight;
 
     reveals.forEach(el => {
-        // Only check elements that are not visible yet
-        if (!el.classList.contains('visible')) {
-            const elementTop = el.getBoundingClientRect().top;
-            if (elementTop < windowHeight - 100) {
-                el.classList.add('visible');
-            }
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+            el.classList.add('visible');
         }
     });
 };
+
+// Run on load + scroll
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
 
 /* ============================================================
    FAQ TOGGLE (Accordion)
@@ -40,26 +45,22 @@ const revealOnScroll = () => {
 const faqItems = document.querySelectorAll('.faq-question');
 
 faqItems.forEach(item => {
-    // Add click listener to each FAQ question
     item.addEventListener('click', () => {
         const answer = item.nextElementSibling;
         const isActive = answer.classList.contains('show');
 
-        // Close all answers
         faqItems.forEach(i => {
             i.nextElementSibling.classList.remove('show');
             i.classList.remove('active');
-            i.setAttribute('aria-expanded', 'false'); // Accessibility
         });
 
-        // Open clicked answer if it was closed
         if (!isActive) {
             answer.classList.add('show');
             item.classList.add('active');
-            item.setAttribute('aria-expanded', 'true');
         }
     });
 });
+
 
 /* ============================================================
    LOADER
@@ -68,42 +69,38 @@ const loaderOverlay = document.getElementById('loader-overlay');
 
 window.addEventListener('load', () => {
     loaderOverlay.classList.add('hide');
-
     setTimeout(() => {
         loaderOverlay.style.display = 'none';
-    }, 800); // match CSS duration
+    }, 800);
 });
 
 
 /* ============================================================
-   OPTIONAL: Navbar Shadow on Scroll
+   NAVBAR SHADOW
 ============================================================ */
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-
-    // Keep revealing elements while scrolling
-    revealOnScroll();
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
-// PARTICLES EFFECT
+
+
+/* ============================================================
+   PARTICLES BACKGROUND
+============================================================ */
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 let particlesArray = [];
 
 function randomColor() {
-    const colors = ['#00ff99', '#ffffff', '#000000']; // green, white, black
-    return colors[Math.floor(Math.random() * colors.length)];
+    return ['#00ff99', '#ffffff', '#000000'][Math.floor(Math.random() * 3)];
 }
 
 function initParticles() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     particlesArray = [];
+
     for (let i = 0; i < 80; i++) {
         particlesArray.push({
             x: Math.random() * canvas.width,
@@ -146,16 +143,3 @@ window.addEventListener('resize', initParticles);
 
 initParticles();
 animateParticles();
-
-menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuIcon.classList.toggle('active'); // animate icon
-});
-
-// Close menu when clicking a link (mobile)
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuIcon.classList.remove('active');
-    });
-});
