@@ -224,8 +224,8 @@ section {
     .hero-dynamic {
         flex-direction: column;
         text-align: center;
-        padding: 80px 20px;
-        gap: 30px;
+        padding: 60px 20px;
+        gap: 20px;
     }
 
     .hero-content {
@@ -245,12 +245,12 @@ section {
     .hero-btn-dynamic {
         padding: 10px 25px;
         font-size: 1rem;
-        margin-top: 25px;
+        margin-top: 15px;
     }
 
     .hero-image img {
-        max-width: 350px;
-        margin-top: 20px;
+        max-width: 300px;
+        margin-top: 10px;
     }
 }
 
@@ -687,6 +687,7 @@ html, body {
    RESPONSIVE DESIGN
 ============================================================ */
 @media (max-width: 768px) {
+    
     .nav-links {
         display: none;
         position: absolute;
@@ -730,7 +731,55 @@ html, body {
         max-width: 350px;
         margin-top: 20px;
     }
+    .logo-area {
+    justify-content: flex-start;
+    flex: 1;
 }
+
+.navbar {
+    padding: 20px; /* reduce padding for mobile */
+}
+
+}
+@media (max-width: 768px) {
+
+    /* Hide desktop CTA button on mobile */
+    .cta-btn {
+        display: none;
+    }
+
+    /* Mobile CTA inside menu */
+    .nav-links .cta-btn-mobile {
+        display: inline-block;
+        margin-top: 10px;
+        background: var(--green);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        transition: 0.3s ease;
+    }
+
+    .nav-links .cta-btn-mobile:hover {
+        background: var(--white);
+        color: var(--green);
+        border: 2px solid var(--green);
+    }
+
+    /* Animate mobile menu */
+    .nav-links {
+        transform: translateY(-20px);
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 
 /* ============================================================
    ANIMATIONS & BUBBLES
@@ -837,3 +886,86 @@ body {
 @keyframes spin1 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes spin2 { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
 @keyframes spin3 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* ================= MOBILE MENU & CTA ================= */
+@media (max-width: 768px) {
+
+    /* Hide desktop CTA on mobile */
+    .navbar > .cta-btn {
+        display: none;
+    }
+
+    /* Show mobile CTA inside menu */
+    .nav-links .mobile-cta {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .nav-links .mobile-cta a {
+        display: inline-block;
+        background: var(--green);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    .nav-links .mobile-cta a:hover {
+        background: var(--white);
+        color: var(--green);
+        border: 2px solid var(--green);
+    }
+
+    /* Animate mobile menu */
+    .nav-links {
+        display: none; /* hide by default */
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        right: 20px;
+        background: #fff;
+        padding: 20px 25px;
+        border-radius: 10px;
+        gap: 15px;
+        width: 200px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        transform: translateY(-20px);
+        opacity: 0;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .menu-icon span {
+        display: block;
+        height: 3px;
+        width: 25px;
+        background: var(--black);
+        margin: 5px 0;
+        transition: 0.3s;
+    }
+
+    /* Optional: animate icon into X when menu active */
+    .menu-icon.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-icon.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
