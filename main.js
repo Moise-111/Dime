@@ -3,22 +3,17 @@
 ============================================================ */
 const menuIcon = document.querySelector('.menu-icon');
 const navLinks = document.querySelector('.nav-links');
-const navLinksItems = document.querySelectorAll('.nav-links a'); // all nav links
 
 menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('active');      // show/hide menu
-    menuIcon.classList.toggle('active');      // animate hamburger
+    navLinks.classList.toggle('active');
 });
-
-// Close menu when clicking a link (mobile only)
-navLinksItems.forEach(link => {
+// Close menu when clicking a link (mobile)
+document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {      // mobile only
-            navLinks.classList.remove('active');
-            menuIcon.classList.remove('active');
-        }
+        navLinks.classList.remove('active');
     });
 });
+
 
 /* ============================================================
    REVEAL ELEMENTS ON SCROLL
@@ -95,4 +90,59 @@ window.addEventListener('scroll', () => {
     // Keep revealing elements while scrolling
     revealOnScroll();
 });
+// PARTICLES EFFECT
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particlesArray = [];
 
+function randomColor() {
+    const colors = ['#00ff99', '#ffffff', '#000000']; // green, white, black
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function initParticles() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particlesArray = [];
+    for (let i = 0; i < 80; i++) {
+        particlesArray.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 4 + 1,
+            speedX: (Math.random() - 0.5) * 1.5,
+            speedY: (Math.random() - 0.5) * 1.5,
+            color: randomColor()
+        });
+    }
+}
+
+function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+    });
+}
+
+function updateParticles() {
+    particlesArray.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+    });
+}
+
+function animateParticles() {
+    drawParticles();
+    updateParticles();
+    requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize', initParticles);
+
+initParticles();
+animateParticles();
