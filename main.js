@@ -146,3 +146,16 @@ window.addEventListener('resize', initParticles);
 
 initParticles();
 animateParticles();
+
+menuIcon.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuIcon.classList.toggle('active'); // animate icon
+});
+
+// Close menu when clicking a link (mobile)
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuIcon.classList.remove('active');
+    });
+});
